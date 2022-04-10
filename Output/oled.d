@@ -39,5 +39,7 @@
 ..\output\oled.o: ..\HARDWARE\BLUETOOTH\bluetooth.h
 ..\output\oled.o: ..\HARDWARE\OPENMV_USART\openmv_usart.h
 ..\output\oled.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+..\output\oled.o: ..\HARDWARE\ADC\adc.h
+..\output\oled.o: ..\SYSTEM\usart\usart.h
 ..\output\oled.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 ..\output\oled.o: ..\HARDWARE\OLED\oledfont.h

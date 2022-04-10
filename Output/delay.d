@@ -39,3 +39,5 @@
 ..\output\delay.o: ..\HARDWARE\BLUETOOTH\bluetooth.h
 ..\output\delay.o: ..\HARDWARE\OPENMV_USART\openmv_usart.h
 ..\output\delay.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+..\output\delay.o: ..\HARDWARE\ADC\adc.h
+..\output\delay.o: ..\SYSTEM\usart\usart.h

@@ -38,3 +38,5 @@
 ..\output\sys.o: ..\HARDWARE\BLUETOOTH\bluetooth.h
 ..\output\sys.o: ..\HARDWARE\OPENMV_USART\openmv_usart.h
 ..\output\sys.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+..\output\sys.o: ..\HARDWARE\ADC\adc.h
+..\output\sys.o: ..\SYSTEM\usart\usart.h

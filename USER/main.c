@@ -9,38 +9,42 @@ u8 Result_Old = 1;
 u8 State = 0;
 u8 State_Old = 1;
 
-float Weight = 74.6;
+float Weight;
 u8 Weight_1,Weight_2;
 
 u16 count = 0;
 
+u16 adcx;
+
 int main(void)
 {
-	delay_init();	    	 //延时函数初始化
-
 	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
 	Bluetooth_Init(115200);
 	Openmv_Usart_Init(115200);
-
+	//uart_init(115200);
+	
+	delay_init();	    	 //延时函数初始化
+	Adc_Init();		  		//ADC初始化
+	
 	PWM_Init_TIM4(0,7199);
 	Motor_Init();
 	//Load(0,0);
 
+	Follow_Init();
+	
 	OLED_Init();			//初始化OLED  
 	OLED_Clear(); 
-
-	Follow_Init();
-
+	
 	OLED_ShowCHinese(0,3,19);	//物
 	OLED_ShowCHinese(16,3,20);	//品
 	OLED_ShowCHinese(32,3,21);	//重
 	OLED_ShowCHinese(48,3,22);	//量	
 	OLED_ShowString(64,3,":     g",16);
 	
-	
 	OLED_ShowCHinese(0,6,8);	//状
 	OLED_ShowCHinese(16,6,9);	//态
 	OLED_ShowString(32,6,":",16);
+	//printf("11111\n");
 	
 	while(1) 
 	{	
@@ -52,7 +56,9 @@ int main(void)
 //			printf("物品重量：%.1fg\n",Weight);
 //			printf("状态：\n");
 //		}
-		
+		adcx = Get_Adc_Average(ADC_Channel_1,10);
+		Weight = (float)adcx*(3.3/4096);
+		//printf("%.1f\n",Weight);
 		Weight_1 = (u8)Weight;
 		Weight_2 = (u16)(Weight*10)%10;
 		OLED_ShowNum(80,3,Weight_1,2,16);

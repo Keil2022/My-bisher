@@ -38,6 +38,8 @@
 ..\output\main.o: ..\HARDWARE\BLUETOOTH\bluetooth.h
 ..\output\main.o: ..\HARDWARE\OPENMV_USART\openmv_usart.h
 ..\output\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+..\output\main.o: ..\HARDWARE\ADC\adc.h
+..\output\main.o: ..\SYSTEM\usart\usart.h
 ..\output\main.o: ..\HARDWARE\OLED\oled.h
 ..\output\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 ..\output\main.o: ..\HARDWARE\OLED\BMP.h

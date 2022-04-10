@@ -39,3 +39,5 @@
 ..\output\encoder.o: ..\HARDWARE\BLUETOOTH\bluetooth.h
 ..\output\encoder.o: ..\HARDWARE\OPENMV_USART\openmv_usart.h
 ..\output\encoder.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+..\output\encoder.o: ..\HARDWARE\ADC\adc.h
+..\output\encoder.o: ..\SYSTEM\usart\usart.h

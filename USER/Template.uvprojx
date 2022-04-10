@@ -369,7 +369,7 @@
               <MiscControls></MiscControls>
               <Define>STM32F10X_HD,USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>..\USER;..\CORE;..\STM32F10x_FWLib\inc;..\SYSTEM\delay;..\SYSTEM\sys;..\SYSTEM\usart;..\HARDWARE\ENCODER;..\HARDWARE\PWM;..\HARDWARE\MOTOR;..\HARDWARE\OLED;..\HARDWARE\FOLLOW;..\HARDWARE\BLUETOOTH;..\HARDWARE\OPENMV_USART</IncludePath>
+              <IncludePath>..\USER;..\CORE;..\STM32F10x_FWLib\inc;..\SYSTEM\delay;..\SYSTEM\sys;..\SYSTEM\usart;..\HARDWARE\ENCODER;..\HARDWARE\PWM;..\HARDWARE\MOTOR;..\HARDWARE\OLED;..\HARDWARE\FOLLOW;..\HARDWARE\BLUETOOTH;..\HARDWARE\OPENMV_USART;..\HARDWARE\ADC</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -631,6 +631,11 @@
               <FileName>openmv_usart.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\HARDWARE\OPENMV_USART\openmv_usart.c</FilePath>
+            </File>
+            <File>
+              <FileName>adc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\ADC\adc.c</FilePath>
             </File>
           </Files>
         </Group>

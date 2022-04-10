@@ -1,5 +1,5 @@
 #include "encoder.h"
-
+/*
 void Encoder_TIM2_Init(void)
 {
 	GPIO_InitTypeDef GPIO_InitStruct;
@@ -66,7 +66,7 @@ void Encoder_TIM4_Init(void)
 	TIM_SetCounter(TIM4,0);
 
 	TIM_Cmd(TIM4,ENABLE);
-}
+}*/
 
 /**********************
 ±àÂëÆ÷

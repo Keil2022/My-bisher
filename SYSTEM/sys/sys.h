@@ -11,6 +11,8 @@
 #include "bluetooth.h"
 #include "openmv_usart.h"
 #include "stdio.h"
+#include "adc.h"
+#include "usart.h"
 
 ////////////////////////////////////////////////////////////////////////////////// 	 
 
