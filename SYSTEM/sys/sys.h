@@ -13,6 +13,8 @@
 #include "stdio.h"
 #include "adc.h"
 #include "usart.h"
+#include "timer.h"
+#include "led.h"
 
 ////////////////////////////////////////////////////////////////////////////////// 	 
 

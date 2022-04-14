@@ -41,3 +41,5 @@
 ..\output\bluetooth.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 ..\output\bluetooth.o: ..\HARDWARE\ADC\adc.h
 ..\output\bluetooth.o: ..\SYSTEM\usart\usart.h
+..\output\bluetooth.o: ..\HARDWARE\TIMER\timer.h
+..\output\bluetooth.o: ..\HARDWARE\LED\led.h

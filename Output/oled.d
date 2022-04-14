@@ -41,5 +41,7 @@
 ..\output\oled.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 ..\output\oled.o: ..\HARDWARE\ADC\adc.h
 ..\output\oled.o: ..\SYSTEM\usart\usart.h
+..\output\oled.o: ..\HARDWARE\TIMER\timer.h
+..\output\oled.o: ..\HARDWARE\LED\led.h
 ..\output\oled.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 ..\output\oled.o: ..\HARDWARE\OLED\oledfont.h

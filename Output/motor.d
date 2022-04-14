@@ -41,3 +41,5 @@
 ..\output\motor.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 ..\output\motor.o: ..\HARDWARE\ADC\adc.h
 ..\output\motor.o: ..\SYSTEM\usart\usart.h
+..\output\motor.o: ..\HARDWARE\TIMER\timer.h
+..\output\motor.o: ..\HARDWARE\LED\led.h

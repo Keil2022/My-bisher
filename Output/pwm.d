@@ -41,3 +41,5 @@
 ..\output\pwm.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 ..\output\pwm.o: ..\HARDWARE\ADC\adc.h
 ..\output\pwm.o: ..\SYSTEM\usart\usart.h
+..\output\pwm.o: ..\HARDWARE\TIMER\timer.h
+..\output\pwm.o: ..\HARDWARE\LED\led.h

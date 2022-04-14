@@ -40,3 +40,5 @@
 ..\output\sys.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 ..\output\sys.o: ..\HARDWARE\ADC\adc.h
 ..\output\sys.o: ..\SYSTEM\usart\usart.h
+..\output\sys.o: ..\HARDWARE\TIMER\timer.h
+..\output\sys.o: ..\HARDWARE\LED\led.h

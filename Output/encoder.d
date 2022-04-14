@@ -41,3 +41,5 @@
 ..\output\encoder.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 ..\output\encoder.o: ..\HARDWARE\ADC\adc.h
 ..\output\encoder.o: ..\SYSTEM\usart\usart.h
+..\output\encoder.o: ..\HARDWARE\TIMER\timer.h
+..\output\encoder.o: ..\HARDWARE\LED\led.h

@@ -41,3 +41,5 @@
 ..\output\openmv_usart.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 ..\output\openmv_usart.o: ..\HARDWARE\ADC\adc.h
 ..\output\openmv_usart.o: ..\SYSTEM\usart\usart.h
+..\output\openmv_usart.o: ..\HARDWARE\TIMER\timer.h
+..\output\openmv_usart.o: ..\HARDWARE\LED\led.h

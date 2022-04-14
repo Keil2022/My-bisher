@@ -9,12 +9,21 @@ u8 Result_Old = 1;
 u8 State = 0;
 u8 State_Old = 1;
 
-float Weight;
+float Weight, Weight_Old;
 u8 Weight_1,Weight_2;
 
-u16 count = 0;
-
 u16 adcx;
+
+extern vu8 flag_100ms;
+extern vu8 flag_500ms;
+extern vu8 flag_1s;
+
+s16 Speed_L = 0;
+s16 Speed_R = 0;
+
+u8 There_are_items = 0, There_are_items_judge = 0;
+u8 Num_of_intercetions = 0;
+u8 turn_time = 0;
 
 int main(void)
 {
@@ -29,7 +38,10 @@ int main(void)
 	PWM_Init_TIM4(0,7199);
 	Motor_Init();
 	//Load(0,0);
-
+	
+	TIM3_Int_Init(999,7199);
+	
+	LED_Init();
 	Follow_Init();
 	
 	OLED_Init();			//初始化OLED  
@@ -46,24 +58,195 @@ int main(void)
 	OLED_ShowString(32,6,":",16);
 	//printf("11111\n");
 	
+	adcx = Get_Adc_Average(ADC_Channel_1,10);
+	Weight_Old = (float)adcx*(3.3/4096)*50;
+	
 	while(1) 
 	{	
-//		count++;
-//		if(count > 1000)
+		if(flag_100ms)
+		{
+			flag_100ms = 0;
+			
+			if(Result == 10)	turn_time = 0;
+			else if(Result == 1)
+			{
+				if(Num_of_intercetions == 1) turn_time++;
+			}
+			else if(Result == 2)
+			{
+				
+			}
+			else if(Result == 3)
+			{
+				
+			}
+			else if(Result == 4)
+			{
+				
+			}
+		}
+		
+		if(flag_500ms)
+		{
+			flag_500ms = 0;
+			
+			adcx = Get_Adc_Average(ADC_Channel_1,10);
+			Weight = (float)adcx*(3.3/4096)*50;
+			//printf("%.1f\n",Weight);
+			
+			Weight -= Weight_Old;
+			if(Weight >100) Weight = 99.9;
+			Weight_1 = (u8)Weight;
+			Weight_2 = (u16)(Weight*10)%10;
+			OLED_ShowNum(80,3,Weight_1,2,16);
+			OLED_ShowChar(96,3,'.',16);
+			OLED_ShowNum(104,3,Weight_2,1,16);
+			
+//			if(Weight >= 20)	There_are_items = 1;
+//			else There_are_items = 0;
+		}
+		
+		if(flag_1s)
+		{
+			flag_1s = 0;
+			
+//			LED0 = !LED0;
+//			LED1 = !LED0;
+		}
+		
+		if(Result == 10)
+		{
+			Speed_L = 0;
+			Speed_R = 0;
+		}
+		else if(Result == 1)
+		{
+			if(!There_are_items_judge)
+			{
+				There_are_items_judge = 1;
+				if(Weight >= 20)
+					There_are_items = 1;				
+			}
+			
+			if(There_are_items)
+			{
+				if(Num_of_intercetions == 0)
+				{
+					if(TR4 == 1 && TR5 == 1)
+					{
+						Speed_L = 2000;
+						Speed_R = 2000;
+					}
+					
+					if(TR4 == 0)	Speed_L = 2100;
+					if(TR5 == 0)	Speed_R = 2100;
+					if(TR6 == 1)	Speed_L = 2500;
+					if(TR3 == 1)	Speed_R = 2500;
+					
+					if(TR3 == 1 && TR4 == 1 && TR5 == 1 && TR6 == 1)	Num_of_intercetions++;
+				}
+				else if(Num_of_intercetions == 1)
+				{
+					if(turn_time < 5)
+					{
+						Speed_L = -2000;
+						Speed_R = 2000;
+					}
+					else if(turn_time < 6)
+					{
+						Speed_L = 2000;
+						Speed_R = 2000;
+					}
+					else
+					{
+						if(TR4 == 1 && TR5 == 1)
+						{
+							Speed_L = 2000;
+							Speed_R = 2000;
+						}
+						
+						if(TR4 == 0)	Speed_L = 2100;
+						if(TR5 == 0)	Speed_R = 2100;
+						if(TR6 == 1)	Speed_L = 2500;
+						if(TR3 == 1)	Speed_R = 2500;	
+						if(TR3 == 1 && TR4 == 1 && TR5 == 1 && TR6 == 1)	Num_of_intercetions++;						
+					}
+				}
+				else if(Num_of_intercetions == 2)
+				{
+					Speed_L = 0;
+					Speed_R = 0;
+				}
+			}
+			
+			
+
+		}
+		else if(Result == 2)
+		{
+			
+		}
+		else if(Result == 3)
+		{
+			
+		}
+		else if(Result == 4)
+		{
+			
+		}
+		Load(Speed_L,Speed_R);
+		
+//		Speed_L = 0;
+//		if(TR1 == 0)	Speed_L += 2000;
+//		if(TR2 == 0)	Speed_L += 1000;
+//		if(TR3 == 0)	Speed_L += 500;
+//		if(TR4 == 0)	Speed_L += 100;
+//		
+//		Speed_R = 0;
+//		if(TR5 == 0)	Speed_R += 100;
+//		if(TR6 == 0)	Speed_R += 500;
+//		if(TR7 == 0)	Speed_R += 1000;
+//		if(TR8 == 0)	Speed_R += 2000;		
+//		Load(Speed_L,Speed_R);
+		
+//		if(TR4 == 1 && TR5 == 1)
 //		{
-//			count = 0;
-//			printf("等待识别结果....\n");
-//			printf("物品重量：%.1fg\n",Weight);
-//			printf("状态：\n");
+//			
 //		}
-		adcx = Get_Adc_Average(ADC_Channel_1,10);
-		Weight = (float)adcx*(3.3/4096);
-		//printf("%.1f\n",Weight);
-		Weight_1 = (u8)Weight;
-		Weight_2 = (u16)(Weight*10)%10;
-		OLED_ShowNum(80,3,Weight_1,2,16);
-		OLED_ShowChar(96,3,'.',16);
-		OLED_ShowNum(104,3,Weight_2,1,16);
+		
+		
+//		if(TR1 == 0 && TR8 == 0)
+//		{
+//			if(TR2 == 0 && TR7 == 0)
+//			{
+//				if(TR3 == 0 && TR6 == 0)
+//				{
+//					if(TR4 == 1 && TR5 == 1)
+//					{
+//						
+//					}
+//				}
+//			}
+//		}
+
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		if(Result^Result_Old)	//有变化
 		{
@@ -142,9 +325,7 @@ int main(void)
 					printf("状态：返程中...\n");
 				}break;
 			}
-		}
-		
-		
+		}	
 	}
 }
 

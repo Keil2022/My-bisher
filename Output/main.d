@@ -40,6 +40,8 @@
 ..\output\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 ..\output\main.o: ..\HARDWARE\ADC\adc.h
 ..\output\main.o: ..\SYSTEM\usart\usart.h
+..\output\main.o: ..\HARDWARE\TIMER\timer.h
+..\output\main.o: ..\HARDWARE\LED\led.h
 ..\output\main.o: ..\HARDWARE\OLED\oled.h
 ..\output\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 ..\output\main.o: ..\HARDWARE\OLED\BMP.h
